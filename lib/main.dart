@@ -5,6 +5,7 @@ import 'core/common/cubits/app_user/app_user_cubit.dart';
 import 'core/theme/theme.dart';
 import 'features/auth/presentation/bloc/auth_bloc.dart';
 import 'features/auth/presentation/pages/login_page.dart';
+import 'features/blog/presentation/pages/blog_page.dart';
 import 'init_dependencies.dart';
 
 void main() async {
@@ -49,11 +50,7 @@ class _MainAppState extends State<MainApp> {
         },
         builder: (context, isLoggedIn) {
           if (isLoggedIn) {
-            return const Scaffold(
-              body: Center(
-                child: Text("HOME"),
-              ),
-            );
+            return const BlogPage();
           }
           return const LoginPage();
         },
