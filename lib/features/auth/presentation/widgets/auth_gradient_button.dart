@@ -7,9 +7,11 @@ class AuthGradientButton extends StatelessWidget {
   const AuthGradientButton({
     super.key,
     required this.text,
+    this.onTap,
   });
 
   final String text;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class AuthGradientButton extends StatelessWidget {
         ),
       ),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: onTap,
         style: ElevatedButton.styleFrom(
           minimumSize: const Size.fromHeight(55),
           backgroundColor: AppPallete.transparentColor,
