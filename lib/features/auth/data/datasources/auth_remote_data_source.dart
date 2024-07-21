@@ -37,9 +37,11 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         password: password,
       );
       if (response.user == null) {
-        throw ServerException("User not found");
+        throw ServerException("User not found!");
       }
       return UserModel.fromJson(response.user!.toJson());
+    } on AuthException catch (e) {
+      throw ServerException(e.message);
     } catch (e) {
       throw ServerException(e.toString());
     }
@@ -60,9 +62,11 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         },
       );
       if (response.user == null) {
-        throw ServerException("User not found");
+        throw ServerException("User not found!");
       }
       return UserModel.fromJson(response.user!.toJson());
+    } on AuthException catch (e) {
+      throw ServerException(e.message);
     } catch (e) {
       throw ServerException(e.toString());
     }

@@ -1,20 +1,24 @@
 part of 'blog_bloc.dart';
 
 @immutable
-sealed class BlogState {}
+sealed class BlogState {
+  const BlogState();
+}
 
 final class BlogInitial extends BlogState {}
 
 final class BlogLoading extends BlogState {}
 
-final class BlogSuccess extends BlogState {
-  // final List<Blog> blogs;
+final class BlogUploadSuccess extends BlogState {}
 
-  BlogSuccess();
+final class BlogDisplaySuccess extends BlogState {
+  final List<Blog> blogs;
+
+  const BlogDisplaySuccess(this.blogs);
 }
 
 final class BlogFailure extends BlogState {
   final String error;
 
-  BlogFailure(this.error);
+  const BlogFailure(this.error);
 }

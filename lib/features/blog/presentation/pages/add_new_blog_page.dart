@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/common/cubits/app_user/app_user_cubit.dart';
 import '../../../../core/common/widgets/loader.dart';
+import '../../../../core/constants/constants.dart';
 import '../../../../core/theme/app_pallete.dart';
 import '../../../../core/utils/app_snackbar.dart';
 import '../../../../core/utils/pick_image.dart';
@@ -79,7 +80,7 @@ class _AddNewBlogPageState extends State<AddNewBlogPage> {
         listener: (context, state) {
           if (state is BlogFailure) {
             AppSnackbar.showSnackabar(context, state.error);
-          } else if (state is BlogSuccess) {
+          } else if (state is BlogUploadSuccess) {
             Navigator.pushAndRemoveUntil(
               context,
               BlogPage.route(),
@@ -144,12 +145,7 @@ class _AddNewBlogPageState extends State<AddNewBlogPage> {
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
-                      children: [
-                        "Technology",
-                        "Business",
-                        "Programming",
-                        "Entertainment"
-                      ]
+                      children: Constants.topics
                           .map(
                             (e) => Padding(
                               padding: const EdgeInsets.all(5),
